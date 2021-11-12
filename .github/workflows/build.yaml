@@ -66,12 +66,6 @@ jobs:
       - name: Build image
         run: "docker build -t ${{ steps.image-name.outputs.name }} ."
 
-      - name: Run Trivy vulnerability scanner
-        # From https://github.com/broadinstitute/dsp-appsec-trivy-action
-        uses: broadinstitute/dsp-appsec-trivy-action@v1
-        with:
-          image: ${{ steps.image-name.outputs.name }}
-
       - name: Push image
         run: "docker push ${{ steps.image-name.outputs.name }}"
 
